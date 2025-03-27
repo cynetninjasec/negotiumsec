@@ -1,0 +1,84 @@
+<!-- videos.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <title>YouTube Videos</title>
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #00ff99;
+            font-family: 'VT323', monospace;
+            text-align: center;
+            font-size: 25px;
+        }
+        .video-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .video-card {
+            background: #1a1a1a;
+            padding: 10px;
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+        }
+        .video-card img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        nav
+         {
+            background: #1a1a1a;
+            padding: 15px;
+        }
+        nav a 
+        {
+            color: #00ff99;
+            text-decoration: none;
+            margin: 0 25px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="videos.html">YouTube Videos</a>
+        <a href="tutorials.html">Tutorials</a>
+    </nav>
+    <h1>Cybersecurity YouTube Videos</h1>
+    <div class="video-grid" id="video-grid"></div>
+    <script>
+        const videos = [
+            { title: " Simulation : Remote Access phone #android #kali #metasploit # reverseshell ", url: "https://www.youtube.com/watch?v=KrItO16LoFQ" },
+            { title: " Simulation:Watch how Hackers takeover Snapchat Account #snapchat #phishing #socialengineering #kali ", url: "https://www.youtube.com/watch?v=9ZvbuIaJniI" },
+            { title: "Simulation : Android spyware development", url: "https://www.youtube.com/watch?v=nFM7925vmBo" },
+            { title: "LOGIN WITHOUT PASSWORD WINDOWS", url: "https://www.youtube.com/watch?v=gHwG-HZq7EQ" },
+            { title: "Social Engineering Phishing techniques step_by_ step tutorial", url: "https://www.youtube.com/watch?v=W76ReoCmWQY&pp=0gcJCb0Ag7Wk3p_U" },
+            { title: "Penetration Testing Free Tools", url: "https://www.youtube.com/watch?v=D1HDRl4G2rA" },
+            { title: "OSINT : MARINE INTEL GATHERING", url: "https://www.youtube.com/watch?v=5ifVCWwFGeE&t" },
+            { title: " Crackdown: Evidence of a Malicious links - url #malware #phishing #socialengineering #phishingscams ", url: "https://www.youtube.com/watch?v=_lK1vd_nEFQ" }
+            
+        ];
+        function loadVideos() {
+            let videoGrid = document.getElementById("video-grid");
+            videos.forEach(video => {
+                let videoId = video.url.split("v=")[1];
+                let thumbnail = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+                let card = document.createElement("div");
+                card.classList.add("video-card");
+                card.innerHTML = `<img src="${thumbnail}" alt="${video.title}"><p>${video.title}</p><a href="${video.url}" target="_blank">Watch</a>`;
+                videoGrid.appendChild(card);
+            });
+        }
+        document.addEventListener("DOMContentLoaded", loadVideos);
+    </script>
+</body>
+</html>

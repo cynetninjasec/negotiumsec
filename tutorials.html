@@ -1,0 +1,85 @@
+<!-- tutorials.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <title>Tutorials</title>
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #00ff99;
+            font-family: 'VT323', monospace;
+            text-align: center;
+            font-size: 25px;
+        }
+        .tutorial-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .tutorial-card {
+            background: #1a1a1a;
+            padding: 10px;
+            border-radius: 8px;
+            width: 250px;
+            cursor: pointer;
+        }
+        .tutorial-content {
+            display: none;
+            margin-top: 10px;
+            background: #333;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        nav
+         {
+            background: #1a1a1a;
+            padding: 15px;
+        }
+        nav a 
+        {
+            color: #00ff99;
+            text-decoration: none;
+            margin: 0 25px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="videos.html">YouTube Videos</a>
+        <a href="tutorials.html">Tutorials</a>
+    </nav>
+    <h1>Cybersecurity Tutorials</h1>
+    <div class="tutorial-grid" id="tutorial-grid"></div>
+    <script>
+        const tutorials = [
+            { title: "Introduction to Ethical Hacking", content: "Learn the basics of ethical hacking..." },
+            { title: "Network Security Fundamentals", content: "Understanding firewalls, IDS, and VPNs..." }
+        ];
+        function loadTutorials() {
+            let tutorialGrid = document.getElementById("tutorial-grid");
+            tutorials.forEach(tutorial => {
+                let card = document.createElement("div");
+                card.classList.add("tutorial-card");
+                card.innerHTML = `<p>${tutorial.title}</p><div class='tutorial-content'>${tutorial.content}</div>`;
+                card.addEventListener("click", function(event) {
+                    event.stopPropagation(); // Prevent event bubbling
+                    let content = card.querySelector(".tutorial-content");
+                    let allContents = document.querySelectorAll(".tutorial-content");
+                    allContents.forEach(c => { if (c !== content) c.style.display = "none"; });
+                    content.style.display = content.style.display === "block" ? "none" : "block";
+                });
+                tutorialGrid.appendChild(card);
+            });
+        }
+        document.addEventListener("DOMContentLoaded", loadTutorials);
+    </script>
+</body>
+</html>
