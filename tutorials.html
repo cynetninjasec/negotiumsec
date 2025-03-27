@@ -4,41 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <title>Tutorials</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <style>
         body {
             background-color: #0d0d0d;
             color: #00ff99;
             font-family: 'VT323', monospace;
             text-align: center;
-            font-size: 25px;
+            font-size: 20px;
         }
         .tutorial-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
+            gap: 20px;
             margin-top: 20px;
         }
         .tutorial-card {
             background: #1a1a1a;
-            padding: 10px;
+            padding: 15px;
             border-radius: 8px;
-            width: 250px;
+            width: 80%;
+            max-width: 800px;
+            text-align: left;
             cursor: pointer;
+            box-shadow: 0px 0px 10px rgba(0, 255, 153, 0.5);
         }
         .tutorial-content {
             display: none;
             margin-top: 10px;
             background: #333;
-            padding: 10px;
-            border-radius: 8px;
-        }
-        nav
-         {
-            background: #1a1a1a;
             padding: 15px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-size: 18px;
         }
         nav a 
         {
@@ -48,6 +48,11 @@
             font-size: 20px;
             cursor: pointer;
         }
+        nav
+         {
+            background: #1a1a1a;
+            padding: 15px;
+        }
     </style>
 </head>
 <body>
@@ -56,19 +61,55 @@
         <a href="videos.html">YouTube Videos</a>
         <a href="tutorials.html">Tutorials</a>
     </nav>
-    <h1>Cybersecurity Tutorials</h1>
+    <h1>bread crumbs and cookies Tutorials</h1>
     <div class="tutorial-grid" id="tutorial-grid"></div>
     <script>
         const tutorials = [
-            { title: "Introduction to Ethical Hacking", content: "Learn the basics of ethical hacking..." },
-            { title: "Network Security Fundamentals", content: "Understanding firewalls, IDS, and VPNs..." }
+            { title: "cURL Command Cheat Sheet",  content: `cURL (Client URL) is a command-line tool used for transferring data using various network protocols. It is widely used in cybersecurity, penetration testing, and automation.
+
+1️⃣ Basic cURL Syntax
+
+curl [options] [URL]
+
+Options modify the behavior of cURL (e.g., -o for output, -H for headers).
+
+URL is the target resource (e.g., a website or API endpoint).
+
+2️⃣ Basic cURL Commands
+
+Command\tDescription
+curl https://example.com\tFetches the content of a webpage.
+curl -o file.html https://example.com\tSaves the output to a file (file.html).
+curl -O https://example.com/index.html\tSaves with the same filename (index.html).
+curl -L https://example.com\tFollows redirects (useful if the URL changes).
+curl -I https://example.com\tFetches only the headers.
+curl -v https://example.com\tEnables verbose mode (useful for debugging).
+curl -s https://example.com\tSilent mode (hides progress/status messages).
+curl -k https://example.com\tIgnores SSL certificate validation (useful for testing).
+
+3️⃣ Handling HTTP Methods
+
+Method\tUsage
+curl -X GET https://api.example.com/data\tSends a GET request (default).
+curl -X POST -d "param1=value1" https://api.example.com\tSends a POST request with data.
+curl -X PUT -d "param1=value1" https://api.example.com\tSends a PUT request.
+curl -X DELETE https://api.example.com/resource/1\tSends a DELETE request.
+curl -X PATCH -d "param=value" https://api.example.com\tSends a PATCH request.
+
+... (More content continues)
+
+🔹 Conclusion
+
+cURL is a powerful tool for making web requests, testing APIs, and automating tasks. It’s widely used in cybersecurity, penetration testing, and DevOps. Mastering cURL gives you an edge in OSINT, web scraping, and security testing.` }
+       
+            /*{ title: "Network Security Fundamentals", content: "# Network Security Essentials\n### Key Concepts:\n- Firewalls\n- IDS/IPS\n- VPNs\n- Zero Trust Security Model\n" }*/
         ];
         function loadTutorials() {
             let tutorialGrid = document.getElementById("tutorial-grid");
             tutorials.forEach(tutorial => {
                 let card = document.createElement("div");
                 card.classList.add("tutorial-card");
-                card.innerHTML = `<p>${tutorial.title}</p><div class='tutorial-content'>${tutorial.content}</div>`;
+                card.innerHTML = `<p><strong>${tutorial.title}</strong></p><div class='tutorial-content'>${tutorial.content}</div>`;
                 card.addEventListener("click", function(event) {
                     event.stopPropagation(); // Prevent event bubbling
                     let content = card.querySelector(".tutorial-content");
